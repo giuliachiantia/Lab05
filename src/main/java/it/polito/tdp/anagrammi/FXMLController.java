@@ -44,6 +44,11 @@ public class FXMLController {
     void handleCalcolaAnagrammi(ActionEvent event) {
     	
     	String parola=this.txtParolaInserita.getText();
+    	if(!parola.matches("[a-zA-z]*")) {
+    		this.txtAnagrammiCorretti.setText("Inserire una parola valida");
+    		this.txtAnagrammiErrati.clear();
+    		return;
+    	}
     	model.anagramma(parola);
     	for(Anagramma ai: model.getListaAnagrammi()) {
     		if(ai.isCorrect()) {
